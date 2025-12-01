@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
 
-// Build cache refresh: 2025-12-01T15:00
+// Build cache refresh: 2025-12-01T18:27
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
