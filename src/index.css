@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 180 31% 94%;
+    --foreground: 229 65% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 229 65% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 229 65% 14%;
+
+    --primary: 187 100% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 100% 34%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 195 55% 90%;
+    --muted-foreground: 229 30% 45%;
+
+    --accent: 195 55% 81%;
+    --accent-foreground: 229 65% 14%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+
+    --border: 195 30% 85%;
+    --input: 195 30% 90%;
+    --ring: 187 100% 35%;
+
+    --radius: 1rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(187 100% 35%), hsl(180 100% 34%));
+    --gradient-secondary: linear-gradient(135deg, hsl(180 100% 34%), hsl(195 55% 81%));
+    --gradient-accent: linear-gradient(135deg, hsl(195 55% 81%), hsl(180 31% 94%));
+    --gradient-mesh: radial-gradient(at 0% 0%, hsl(187 100% 35% / 0.3) 0px, transparent 50%), radial-gradient(at 100% 0%, hsl(180 100% 34% / 0.2) 0px, transparent 50%), radial-gradient(at 100% 100%, hsl(195 55% 81% / 0.3) 0px, transparent 50%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.9), hsl(195 55% 98% / 0.8));
+    --gradient-hero: linear-gradient(135deg, hsl(187 100% 35%) 0%, hsl(180 100% 34%) 50%, hsl(229 65% 14%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.7), hsl(0 0% 100% / 0.3));
+    
+    --shadow-soft: 0 2px 8px hsl(187 100% 35% / 0.08);
+    --shadow-medium: 0 4px 16px hsl(187 100% 35% / 0.12);
+    --shadow-large: 0 8px 32px hsl(187 100% 35% / 0.16);
+    --shadow-glow: 0 0 32px hsl(187 100% 35% / 0.3);
+    --shadow-xl: 0 20px 48px hsl(187 100% 35% / 0.25);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 229 65% 8%;
+    --foreground: 180 31% 94%;
+
+    --card: 229 50% 12%;
+    --card-foreground: 180 31% 94%;
+
+    --popover: 229 50% 12%;
+    --popover-foreground: 180 31% 94%;
+
+    --primary: 187 100% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 100% 34%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 229 30% 18%;
+    --muted-foreground: 195 30% 65%;
+
+    --accent: 195 55% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+
+    --border: 229 30% 22%;
+    --input: 229 30% 18%;
+    --ring: 187 100% 35%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(187 100% 35%), hsl(180 100% 34%));
+    --gradient-secondary: linear-gradient(135deg, hsl(180 100% 34%), hsl(195 55% 60%));
+    --gradient-mesh: radial-gradient(at 0% 0%, hsl(187 100% 35% / 0.2) 0px, transparent 50%), radial-gradient(at 100% 0%, hsl(180 100% 34% / 0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, hsl(195 55% 60% / 0.2) 0px, transparent 50%);
+    --gradient-card: linear-gradient(145deg, hsl(229 50% 12% / 0.9), hsl(229 30% 18% / 0.8));
+    --gradient-hero: linear-gradient(135deg, hsl(229 65% 8%) 0%, hsl(187 100% 20%) 50%, hsl(180 100% 25%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsl(0 0% 100% / 0.1), hsl(0 0% 100% / 0.05));
+    
+    --shadow-soft: 0 2px 8px hsl(0 0% 0% / 0.3);
+    --shadow-medium: 0 4px 16px hsl(0 0% 0% / 0.4);
+    --shadow-large: 0 8px 32px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 32px hsl(187 100% 35% / 0.3);
+    --shadow-xl: 0 20px 48px hsl(0 0% 0% / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Print styles for contract/proposal downloads */
+@media print {
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  @page {
+    margin: 1cm;
+    size: A4;
+  }
+  
+  /* Ensure proper page breaks */
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  table {
+    page-break-inside: avoid;
+  }
+}

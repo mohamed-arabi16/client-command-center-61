@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض سعر واتفاقية خدمة - Qobouli</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-brand-primary: #009DB0;
+            --color-brand-secondary: #00ABAB;
+            --color-brand-light: #B6DCE9;
+            --color-brand-bg-light: #E9F4F4;
+            --color-brand-dark-text: #0C1439;
+        }
+
+        body {
+            font-family: 'Noto Kufi Arabic', 'Inter', sans-serif;
+            background-color: var(--color-brand-bg-light);
+            color: var(--color-brand-dark-text);
+        }
+
+        .text-brand-primary { color: var(--color-brand-primary); }
+        .text-brand-dark { color: var(--color-brand-dark-text); }
+        .bg-brand-primary { background-color: var(--color-brand-primary); }
+        .bg-brand-secondary { background-color: var(--color-brand-secondary); }
+        .border-brand-primary { border-color: var(--color-brand-primary); }
+        .border-brand-light { border-color: var(--color-brand-light); }
+
+        th {
+            text-align: right;
+        }
+        td {
+            text-align: right;
+        }
+        
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body class="p-8 md:p-12">
+
+    <div class="printable-content max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-100">
+        
+        <!-- الهيدر: الشعار والعنوان -->
+        <header class="flex flex-col sm:flex-row justify-between items-start pb-8 border-b border-brand-light">
+            <div>
+                <h1 class="text-4xl font-bold text-brand-primary">Qobouli</h1>
+                <p class="text-lg text-gray-500 mt-1">استراتيجيات المحتوى والإعلام الرقمي</p>
+            </div>
+            <div class="mt-4 sm:mt-0 sm:text-left">
+                <h2 class="text-3xl font-bold text-brand-dark">اتفاقية خدمة</h2>
+                <p class="text-gray-500 mt-1">رقم العقد: <span class="font-medium text-gray-700">[CONTRACT_NUMBER]</span></p>
+                <p class="text-gray-500">التاريخ: <span class="font-medium text-gray-700">[CONTRACT_DATE]</span></p>
+            </div>
+        </header>
+
+        <!-- قسم الأطراف -->
+        <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">لصالح (العميل)</h3>
+                <div class="mt-3 space-y-2">
+                    <p class="text-xl font-bold text-brand-dark">[CLIENT_NAME]</p>
+                    <p>[CLIENT_CONTACT_PERSON]</p>
+                    <p>[CLIENT_ADDRESS]</p>
+                    <p dir="ltr" class="text-right">[CLIENT_PHONE]</p>
+                    <p>[CLIENT_EMAIL]</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-sm font-semibold text-gray-500 uppercase tracking-wider">من قبل (الوكالة)</h3>
+                <div class="mt-3 space-y-2">
+                    <p class="text-xl font-bold text-brand-dark">Qobouli</p>
+                    <p>Basaksehir, Istanbul, Turkey</p>
+                    <p dir="ltr" class="text-right">+90 538 013 0948</p>
+                    <p>medane999@gmail.com</p>
+                    <p>mk.qobouli.com</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ملخص الاتفاقية -->
+        <section class="mt-10">
+            <p class="text-lg leading-relaxed">
+                تم إبرام هذه الاتفاقية بين <strong>[CLIENT_NAME]</strong> ("العميل") وشركة <strong>Qobouli</strong> ("الوكالة") لتقديم خدمات الإعلام الرقمي وإنشاء المحتوى كما هو مفصل أدناه. تحدد هذه الوثيقة نطاق العمل، المُسلّمات، شروط الدفع، والأحكام.
+            </p>
+        </section>
+
+        <!-- نطاق الخدمات والمُسلّمات (الباقة المفصّلة) -->
+        <section class="mt-10">
+            <h2 class="text-2xl font-bold text-brand-primary mb-4">نطاق الخدمات والمُسلّمات (الباقة المفصّلة)</h2>
+            <div class="overflow-x-auto border border-brand-light rounded-lg">
+                <table class="min-w-full divide-y divide-brand-light">
+                    <thead class="bg-brand-bg-light">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-brand-primary uppercase tracking-wider">البند (الخدمة)</th>
+                            <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-brand-primary uppercase tracking-wider">الوصف / التفاصيل</th>
+                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-brand-primary uppercase tracking-wider">السعر (دولار)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        [SERVICE_ITEMS]
+                    </tbody>
+                    <tfoot class="bg-brand-bg-light">
+                        <tr>
+                            <th scope="row" colspan="2" class="px-6 py-4 text-left text-sm font-bold text-brand-dark uppercase tracking-wider">
+                                المجموع الفرعي ([DURATION_TEXT])
+                            </th>
+                            <td class="px-6 py-4 text-left whitespace-nowrap">
+                                <span class="text-xl font-bold text-brand-primary" dir="ltr">
+                                    $ [SUBTOTAL_BEFORE_DISCOUNT]
+                                </span>
+                            </td>
+                        </tr>
+                        [DISCOUNT_ROW]
+                        <tr>
+                            <th scope="row" colspan="2" class="px-6 py-4 text-left text-sm font-bold text-brand-dark uppercase tracking-wider">
+                                الإجمالي النهائي
+                            </th>
+                            <td class="px-6 py-4 text-left whitespace-nowrap">
+                                <span class="text-xl font-bold text-brand-primary" dir="ltr">
+                                    $ [TOTAL_AMOUNT]
+                                </span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+
+        <!-- الأحكام والشروط -->
+        <section class="mt-10">
+            <h2 class="text-2xl font-bold text-brand-primary mb-6">الأحكام والشروط</h2>
+            <div class="space-y-6">
+                
+                <!-- شروط الدفع -->
+                <div>
+                    <h3 class="text-lg font-semibold text-brand-dark mb-2">1. شروط الدفع</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        يتم سداد قيمة الباقة الإجمالية البالغة <strong dir="ltr">$ [TOTAL_AMOUNT]</strong> على النحو التالي:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2 pr-4">
+                        [PAYMENT_SCHEDULE]
+                    </ul>
+                    
+                    <!-- معلومات الحساب البنكي -->
+                    <div class="mt-4 p-4 bg-brand-bg-light rounded-lg border border-brand-light">
+                        <h4 class="font-semibold text-brand-dark">معلومات الحساب البنكي (دولار أمريكي)</h4>
+                        <div class="mt-2 space-y-1 text-brand-dark text-sm">
+                            <p><strong>البنك:</strong> Kuveyt Turk</p>
+                            <p><strong>اسم الحساب:</strong> RAGHAD AL ZOUGHBI</p>
+                            <p dir="ltr" class="text-right"><strong>IBAN:</strong> TR960020500009873404800105</p>
+                            <p><strong>العملة:</strong> $ (USD)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- مدة العقد -->
+                <div>
+                    <h3 class="text-lg font-semibold text-brand-dark mb-2">2. مدة العقد والتجديد</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        تبدأ هذه الاتفاقية من تاريخ <strong>[CONTRACT_START_DATE]</strong> وتستمر لمدة <strong>[DURATION_TEXT]</strong>.
+                        يبدأ العمل على محتوى الشهر التالي قبل 10 أيام تقريباً من نهاية دورة الفوترة الحالية لضمان استمرارية الخدمة.
+                    </p>
+                </div>
+
+                <!-- نطاق العمل والمراجعات -->
+                <div>
+                    <h3 class="text-lg font-semibold text-brand-dark mb-2">3. نطاق العمل والمراجعات</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        الخدمات مفصلة في جدول "نطاق الخدمات". يتضمن العمل جولتين من المراجعات والتعديلات للمُسلّمات.
+                    </p>
+                </div>
+                
+                <!-- مسؤوليات العميل -->
+                <div>
+                    <h3 class="text-lg font-semibold text-brand-dark mb-2">4. مسؤوليات العميل</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        يوافق العميل على توفير الوصول في الوقت المناسب للأصول المطلوبة (Brand Assets)، معلومات المنتجات، وتقديم الملاحظات (Feedback). أي تأخير في الموافقات قد يؤثر على الجدول الزمني لنشر المحتوى.
+                    </p>
+                </div>
+
+                <!-- ملاحظات خاصة -->
+                <div class="p-4 bg-brand-bg-light rounded-lg border border-brand-light">
+                    <h4 class="font-semibold text-brand-primary">ملاحظات خاصة</h4>
+                    <p class="text-sm text-brand-dark mt-1">
+                        للعقود الجديدة (أول مرة)، قد تمتد مدة تسليم محتوى الشهر الأول إلى 45 يوماً (بدلاً من 30) دون أي تكلفة إضافية، لاستيعاب عملية الإعداد الأولي والتصوير والمونتاج.
+                    </p>
+                    [NOTES_SECTION]
+                </div>
+
+            </div>
+        </section>
+
+        <!-- قسم التواقيع -->
+        <section class="mt-16 pt-10 border-t border-brand-light">
+            <h2 class="text-2xl font-bold text-brand-primary mb-8">الموافقة والتواقيع</h2>
+            <p class="text-gray-700 leading-relaxed mb-8">
+                يوافق الطرفان على الأحكام والشروط المنصوص عليها في هذه الاتفاقية. يمكن توقيع هذا العقد إلكترونياً أو ورقياً.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- توقيع العميل -->
+                <div>
+                    <div class="border-b-2 border-brand-dark pb-2 mb-4">
+                        <span class="text-lg font-bold text-brand-dark">[CLIENT_NAME]</span>
+                    </div>
+                    <div class="h-16"></div>
+                    <p class="border-t border-gray-300 pt-2 text-sm text-gray-600">التوقيع</p>
+                    <div class="mt-6">
+                        <p class="border-t border-gray-300 pt-2 text-sm text-gray-600">الاسم المطبوع: [CLIENT_CONTACT_PERSON]</p>
+                    </div>
+                    <div class="mt-6">
+                        <p class="border-t border-gray-300 pt-2 text-sm text-gray-600">التاريخ</p>
+                    </div>
+                </div>
+
+                <!-- توقيع الوكالة -->
+                <div>
+                    <div class="border-b-2 border-brand-dark pb-2 mb-4">
+                        <span class="text-lg font-bold text-brand-dark">Qobouli</span>
+                    </div>
+                    <div class="h-16"></div>
+                    <p class="border-t border-gray-300 pt-2 text-sm text-gray-600">التوقيع</p>
+                    <div class="mt-6">
+                        <p class="border-t border-gray-300 pt-2 text-sm text-gray-600">الاسم المطبوع: محمدخير قبولي</p>
+                    </div>
+                    <div class="mt-6">
+                        <p class="border-t border-gray-300 pt-2 text-sm text-gray-600">التاريخ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
