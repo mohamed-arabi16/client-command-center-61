@@ -69,8 +69,9 @@ const ProposalView = () => {
 
   const generateShareLink = async () => {
     try {
-      const token = `prop_${Math.random().toString(36).substr(2, 9)}`;
-      
+      // Use crypto.randomUUID() for cryptographically secure token generation
+      const token = `prop_${crypto.randomUUID().replace(/-/g, '')}`;
+
       const { error } = await supabase
         .from('proposals')
         .update({ share_token: token })

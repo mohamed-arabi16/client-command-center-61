@@ -132,6 +132,17 @@ function getDurationTextArabic(duration: string): string {
   return map[duration] || 'شهر واحد';
 }
 
+// HTML escape function to prevent XSS attacks
+function escapeHtml(str: string | null | undefined): string {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -211,13 +222,13 @@ serve(async (req) => {
       return new Date(dateStr).toLocaleDateString('ar-EG');
     };
 
-    // Generate service items HTML
+    // Generate service items HTML (with HTML escaping for XSS prevention)
     const serviceItemsHtml = (items || []).map((item: any, index: number) => {
       return `
         <tr>
-            <td class="px-6 py-4 whitespace-nowrap font-medium">${index + 1}. ${item.service_name}</td>
+            <td class="px-6 py-4 whitespace-nowrap font-medium">${index + 1}. ${escapeHtml(item.service_name)}</td>
             <td class="px-6 py-4">
-                <p class="text-sm text-gray-700">${item.description}</p>
+                <p class="text-sm text-gray-700">${escapeHtml(item.description)}</p>
                 <p class="text-xs text-gray-500 mt-1">الكمية: ${item.quantity}</p>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-left">
@@ -246,23 +257,23 @@ serve(async (req) => {
       return `<li><strong>الدفعة ${index + 1}:</strong> <span dir="ltr">$ ${payment.amount.toFixed(2)}</span> - تاريخ الاستحقاق: ${formatDate(payment.due_date)}</li>`;
     }).join('');
 
-    // Generate notes section
+    // Generate notes section (with HTML escaping for XSS prevention)
     const notesHtml = proposal.notes ? `
         <p class="text-sm text-brand-dark mt-2">
             <strong>ملاحظات إضافية:</strong><br>
-            ${proposal.notes}
+            ${escapeHtml(proposal.notes)}
         </p>
     ` : '';
 
-    // Replace all placeholders
+    // Replace all placeholders (with HTML escaping for XSS prevention)
     let html = template
-      .replace(/\[CONTRACT_NUMBER\]/g, proposal.contract_number || 'قيد الإنشاء')
+      .replace(/\[CONTRACT_NUMBER\]/g, escapeHtml(proposal.contract_number || 'قيد الإنشاء'))
       .replace(/\[CONTRACT_DATE\]/g, formatDate(proposal.created_at))
-      .replace(/\[CLIENT_NAME\]/g, proposal.client_name || 'العميل')
-      .replace(/\[CLIENT_CONTACT_PERSON\]/g, proposal.client_contact_person || proposal.client_name || 'جهة الاتصال')
-      .replace(/\[CLIENT_ADDRESS\]/g, proposal.client_address || 'العنوان غير محدد')
-      .replace(/\[CLIENT_PHONE\]/g, proposal.client_phone || 'غير محدد')
-      .replace(/\[CLIENT_EMAIL\]/g, proposal.client_email || 'غير محدد')
+      .replace(/\[CLIENT_NAME\]/g, escapeHtml(proposal.client_name || 'العميل'))
+      .replace(/\[CLIENT_CONTACT_PERSON\]/g, escapeHtml(proposal.client_contact_person || proposal.client_name || 'جهة الاتصال'))
+      .replace(/\[CLIENT_ADDRESS\]/g, escapeHtml(proposal.client_address || 'العنوان غير محدد'))
+      .replace(/\[CLIENT_PHONE\]/g, escapeHtml(proposal.client_phone || 'غير محدد'))
+      .replace(/\[CLIENT_EMAIL\]/g, escapeHtml(proposal.client_email || 'غير محدد'))
       .replace(/\[DURATION_TEXT\]/g, getDurationTextArabic(proposal.contract_duration))
       .replace(/\[CONTRACT_START_DATE\]/g, formatDate(proposal.contract_start_date))
       .replace(/\[SERVICE_ITEMS\]/g, serviceItemsHtml)
