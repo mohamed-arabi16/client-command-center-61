@@ -72,9 +72,10 @@ async function checkDatabase(supabase: any): Promise<CheckResult> {
       responseTime,
     };
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return {
       status: "fail",
-      message: `Database check failed: ${error.message}`,
+      message: `Database check failed: ${errorMessage}`,
       responseTime: Date.now() - start,
     };
   }
@@ -103,9 +104,10 @@ async function checkAuth(supabase: any): Promise<CheckResult> {
       responseTime,
     };
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return {
       status: "fail",
-      message: `Auth check failed: ${error.message}`,
+      message: `Auth check failed: ${errorMessage}`,
       responseTime: Date.now() - start,
     };
   }
@@ -137,9 +139,10 @@ async function checkStorage(supabase: any): Promise<CheckResult> {
       },
     };
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return {
       status: "fail",
-      message: `Storage check failed: ${error.message}`,
+      message: `Storage check failed: ${errorMessage}`,
       responseTime: Date.now() - start,
     };
   }
@@ -159,9 +162,10 @@ async function checkEdgeFunctions(): Promise<CheckResult> {
       responseTime,
     };
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     return {
       status: "fail",
-      message: `Edge functions check failed: ${error.message}`,
+      message: `Edge functions check failed: ${errorMessage}`,
       responseTime: Date.now() - start,
     };
   }
@@ -238,6 +242,7 @@ serve(async (req) => {
     });
   } catch (error) {
     console.error("Health check error:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
 
     const errorResponse: HealthCheck = {
       status: "unhealthy",
@@ -251,7 +256,7 @@ serve(async (req) => {
         storage: { status: "fail", message: "Unknown" },
         edgeFunctions: {
           status: "fail",
-          message: `Health check failed: ${error.message}`,
+          message: `Health check failed: ${errorMessage}`,
         },
       },
       metrics: {
