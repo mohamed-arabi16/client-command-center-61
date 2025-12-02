@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -38,6 +39,7 @@ interface AddClientDialogProps {
 }
 
 export const AddClientDialog = ({ onClientAdded, open: controlledOpen, onOpenChange }: AddClientDialogProps) => {
+  const navigate = useNavigate();
   const [internalOpen, setInternalOpen] = useState(false);
   const open = controlledOpen !== undefined ? controlledOpen : internalOpen;
   const setOpen = onOpenChange || setInternalOpen;
@@ -152,15 +154,16 @@ export const AddClientDialog = ({ onClientAdded, open: controlledOpen, onOpenCha
         }
       }
 
-      const { error } = await supabase.from('clients').insert(clientData);
+      const { data: newClient, error } = await supabase.from('clients').insert(clientData).select().single();
 
       if (error) throw error;
 
-      toast.success('Client added successfully!');
+      toast.success('Client added successfully! Now create a proposal.');
       setOpen(false);
       form.reset();
       setInstagramData(null);
       onClientAdded();
+      navigate(`/proposals/new?clientId=${newClient.id}`);
     } catch (error: any) {
       toast.error(error.message || 'Failed to add client');
     } finally {
