@@ -615,15 +615,13 @@ const ProposalBuilder = () => {
             AI Pricing Assistant
           </h2>
           <p className="text-muted-foreground mb-4">Describe the client's needs in Arabic or English, or use a template</p>
-          <div className="flex gap-4 mb-4">
-            <Button 
-              variant="outline" 
-              onClick={() => navigate('/proposals/templates')}
-            >
-              <FileText className="mr-2 h-4 w-4" />
-              Browse Templates
-            </Button>
-          </div>
+          <Button
+            variant="outline"
+            onClick={() => navigate(`/proposals/templates${clientId ? `?clientId=${clientId}` : ''}`)}
+          >
+            <FileText className="mr-2 h-4 w-4" />
+            Browse Templates
+          </Button>
           <Textarea
             placeholder="مثال: العميل يريد إدارة انستغرام وتيك توك مع 30 بوست شهرياً و 20 فيديو و جلستين تصوير..."
             value={aiDescription}

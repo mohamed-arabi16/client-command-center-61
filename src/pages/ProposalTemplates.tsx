@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,8 @@ interface Template {
 
 const ProposalTemplates = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const clientId = searchParams.get('clientId');
   const { user } = useAuth();
   const [templates, setTemplates] = useState<Template[]>([]);
   const [loading, setLoading] = useState(true);
@@ -225,9 +227,9 @@ const ProposalTemplates = () => {
                     </Button>
                   </div>
                 </div>
-                <Button 
-                  className="w-full" 
-                  onClick={() => navigate(`/proposals/new?templateId=${template.id}`)}
+                <Button
+                  className="w-full"
+                  onClick={() => navigate(`/proposals/new?templateId=${template.id}${clientId ? `&clientId=${clientId}` : ''}`)}
                 >
                   Use Template
                 </Button>
