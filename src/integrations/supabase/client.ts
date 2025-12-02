@@ -2,28 +2,8 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-
-// Validate environment variables
-if (!SUPABASE_URL) {
-  throw new Error(
-    'Missing environment variable: VITE_SUPABASE_URL. ' +
-    'Please check your .env file or deployment environment variables. ' +
-    'See .env.example for the required format.'
-  );
-}
-
-if (!SUPABASE_PUBLISHABLE_KEY) {
-  throw new Error(
-    'Missing environment variable: VITE_SUPABASE_PUBLISHABLE_KEY. ' +
-    'Please check your .env file or deployment environment variables. ' +
-    'See .env.example for the required format.'
-  );
-}
-
-// Import the supabase client like this:
-// import { supabase } from "@/integrations/supabase/client";
+const SUPABASE_URL = "https://omvpmpzapydnmstyebpd.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9tdnBtcHphcHlkbm1zdHllYnBkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1OTc4MTYsImV4cCI6MjA4MDE3MzgxNn0.TscSKRG2IZApS39ppOFv0qDnh7mGkgNx-TymDIKmynE";
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
